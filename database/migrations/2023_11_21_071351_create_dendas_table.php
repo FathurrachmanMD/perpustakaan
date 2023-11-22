@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('denda', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->unsignedBigInteger('peminjaman_id');
+            $table->integer('biaya');
+            $table->text('keterangan');
+
+            $table->foreign('peminjaman_id')->references('id')->on('peminjaman');
         });
     }
 
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('denda');
     }
 };

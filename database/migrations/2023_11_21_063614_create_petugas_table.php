@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('anggota', function (Blueprint $table) {
+        Schema::create('petugas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('nama', 255);
@@ -24,13 +24,13 @@ return new class extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
         });
-    }
+    }    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('anggota');
+        Schema::dropIfExists('petugas');
     }
 };
